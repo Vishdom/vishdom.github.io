@@ -52,6 +52,12 @@ body {
   color: #333;
   margin-bottom: 1rem;
 }
+.highlight {
+  background-color: yellow; /* highlight background */
+  color: inherit;           /* keep the text color same as surrounding text */
+  padding: 2px 4px;         /* small padding for readability */
+  border-radius: 2px;       /* optional rounded corners */
+}
 
 /* Countdown timer */
 .countdown {
