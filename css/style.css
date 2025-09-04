@@ -1,37 +1,45 @@
-/* Import Roboto font */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-
 /* Global Styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
+  font-family: Arial, sans-serif; /* default fallback */
+  background-color: #fff;
+  color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Header */
-header {
-    text-align: center;
-    padding: 2rem 1rem;
-    font-weight: 500;
-}
-
-/* Main Coming Soon Section */
-main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Centered Coming Soon container */
 .coming-soon {
-    text-align: center;
-    paddin
+  text-align: center;
+}
+
+/* Vishdom - h1 */
+.coming-soon h1 {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+/* Coming Soon - h2 */
+.coming-soon h2 {
+  font-weight: normal;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Exciting things sentence - h3 */
+.coming-soon h3 {
+  font-weight: normal;
+  font-size: 1.5rem;
+  color: #333;
+}
