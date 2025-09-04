@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif; /* fallback */
-  background-color: #fff !important;  /* force white background */
+  background-color: #fff !important;
   color: #000;
   height: 100vh;
   display: flex;
@@ -20,7 +20,17 @@ body {
   text-align: center;
 }
 
-/* Vishdom - h1 */
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* H1, H2, H3 styles */
 .coming-soon h1 {
   font-family: 'Helvetica', sans-serif;
   font-weight: bold;
@@ -29,7 +39,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Coming Soon - h2 */
 .coming-soon h2 {
   font-weight: normal;
   font-size: 2rem;
@@ -37,9 +46,16 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* Exciting things sentence - h3 */
 .coming-soon h3 {
   font-weight: normal;
   font-size: 1.5rem;
   color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Countdown timer */
+.countdown {
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 1rem;
 }
