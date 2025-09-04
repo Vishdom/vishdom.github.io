@@ -6,8 +6,8 @@
 }
 
 body {
-  font-family: Arial, sans-serif; /* default fallback */
-  background-color: #fff;
+  font-family: Arial, sans-serif; /* fallback */
+  background-color: #fff !important;  /* force white background */
   color: #000;
   height: 100vh;
   display: flex;
