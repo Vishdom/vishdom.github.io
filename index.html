@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vishwanath Patil | Portfolio</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .highlight-keyword {
+      font-style: italic;
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-thickness: 0.5px;
+      /* very thin underline */
+      text-decoration-color: black;
+      /* ensures underline is visible */
+    }
+  </style>
 </head>
 
 <body>
@@ -24,12 +35,37 @@
   <!-- Main content -->
   <main class="content">
     <h2>Hi, I’m <span class="highlight">Vishwanath Patil</span></h2>
-    <p>
-      Welcome to my <strong>portfolio</strong>.
-      I work at the intersection of <em>storytelling, production,</em> and <em>journalism</em>.
-      Here, you’ll find a showcase of my <strong>work, stories,</strong> and <strong>creative projects</strong>.
+    <p id="intro-text">
+      I’ve lived the newsroom in all its forms — from reporting on defense and politics to producing cricket fever,
+      from live elections broadcasts to building AI-driven workflows that change how media gets made.
+      I don’t just adapt to media shifts; I build for them.
+      That means creating stories that matter, systems that scale, and platforms that grow.
+      I bring the curiosity of a journalist, the agility of a startup, and the stubbornness of a builder who won’t
+      settle for the ordinary.
+      This space is my workshop.
+      Here, you’ll find the work I’ve done, the stories I’ve shaped, and the experiments I’ve pushed into reality —
+      always chasing better ways to inform, engage, and imagine what’s next.
     </p>
   </main>
+
+  <script>
+    // Keywords to style
+    const keywords = [
+      "newsroom", "reporting", "defense", "politics", "sports",
+      "elections", "media", "journalist", "startup", "builder",
+      "stories", "inform", "engage", "imagine"
+    ];
+
+    const introText = document.getElementById("intro-text");
+    let html = introText.innerHTML;
+
+    keywords.forEach(word => {
+      const regex = new RegExp(`\\b${word}\\b`, 'gi'); // match whole word, case-insensitive
+      html = html.replace(regex, `<span class="highlight-keyword">$&</span>`);
+    });
+
+    introText.innerHTML = html;
+  </script>
 </body>
 
 </html>
