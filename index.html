@@ -5,16 +5,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vishwanath Patil | Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
   <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #111;
+      padding: 20px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+      /* Space between paragraphs */
+    }
+
     .highlight-keyword {
       font-style: italic;
-      font-weight: bold;
       text-decoration: underline;
       text-decoration-thickness: 0.5px;
       /* very thin underline */
       text-decoration-color: black;
-      /* ensures underline is visible */
+    }
+
+    .red-dot {
+      color: red;
+    }
+
+    nav.nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    nav.nav ul li a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 600;
+    }
+
+    nav.nav ul li a.active {
+      border-bottom: 2px solid #111;
     }
   </style>
 </head>
@@ -35,16 +79,23 @@
   <!-- Main content -->
   <main class="content">
     <h2>Hi, I’m <span class="highlight">Vishwanath Patil</span></h2>
-    <p id="intro-text">
-      I’ve lived the newsroom in all its forms — from reporting on defense and politics to producing cricket fever,
+
+    <p id="para1">
+      I’ve lived the newsroom in all its forms — from reporting on defense and politics to producing sports, events,
       from live elections broadcasts to building AI-driven workflows that change how media gets made.
       I don’t just adapt to media shifts; I build for them.
+    </p>
+
+    <p id="para2">
       That means creating stories that matter, systems that scale, and platforms that grow.
       I bring the curiosity of a journalist, the agility of a startup, and the stubbornness of a builder who won’t
       settle for the ordinary.
+    </p>
+
+    <p id="para3">
       This space is my workshop.
       Here, you’ll find the work I’ve done, the stories I’ve shaped, and the experiments I’ve pushed into reality —
-      always chasing better ways to inform, engage, and imagine what’s next.
+      always chasing better ways to inform, engage, and imagine what’s next<span class="red-dot">.</span>
     </p>
   </main>
 
@@ -56,15 +107,31 @@
       "stories", "inform", "engage", "imagine"
     ];
 
-    const introText = document.getElementById("intro-text");
-    let html = introText.innerHTML;
+    // Function to highlight keywords in a paragraph
+    function highlightKeywords(paragraphId) {
+      const para = document.getElementById(paragraphId);
+      let html = para.innerHTML;
 
-    keywords.forEach(word => {
-      const regex = new RegExp(`\\b${word}\\b`, 'gi'); // match whole word, case-insensitive
-      html = html.replace(regex, `<span class="highlight-keyword">$&</span>`);
-    });
+      // Track occurrences to skip the second "media"
+      const occurrences = {};
 
-    introText.innerHTML = html;
+      keywords.forEach(word => {
+        const regex = new RegExp(`\\b${word}\\b`, 'gi'); // match whole word, case-insensitive
+        html = html.replace(regex, match => {
+          if (word.toLowerCase() === "media") {
+            occurrences[word] = (occurrences[word] || 0) + 1;
+            if (occurrences[word] === 2) return match; // skip second occurrence
+          }
+          return `<span class="highlight-keyword">${match}</span>`;
+        });
+      });
+
+      para.innerHTML = html;
+    }
+
+    highlightKeywords("para1");
+    highlightKeywords("para2");
+    highlightKeywords("para3");
   </script>
 </body>
 
