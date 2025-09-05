@@ -44,95 +44,13 @@
       color: red;
     }
 
+    /* Vertical navigation */
     nav.nav ul {
       list-style-type: none;
       padding: 0;
-      display: flex;
-      gap: 15px;
+      margin: 0;
+      display: block;
     }
 
-    nav.nav ul li a {
-      text-decoration: none;
-      color: #111;
-      font-weight: 600;
-    }
-
-    nav.nav ul li a.active {
-      border-bottom: 2px solid #111;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="stories.html">Stories</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main content -->
-  <main class="content">
-    <h2>Hi, I’m <span class="highlight">Vishwanath Patil</span></h2>
-
-    <p id="para1">
-      I’ve lived the newsroom in all its forms — from reporting on defense and politics to producing sports, events,
-      from live elections broadcasts to building AI-driven workflows that change how media gets made.
-      I don’t just adapt to media shifts; I build for them.
-    </p>
-
-    <p id="para2">
-      That means creating stories that matter, systems that scale, and platforms that grow.
-      I bring the curiosity of a journalist, the agility of a startup, and the stubbornness of a builder who won’t
-      settle for the ordinary.
-    </p>
-
-    <p id="para3">
-      This space is my workshop.
-      Here, you’ll find the work I’ve done, the stories I’ve shaped, and the experiments I’ve pushed into reality —
-      always chasing better ways to inform, engage, and imagine what’s next<span class="red-dot">.</span>
-    </p>
-  </main>
-
-  <script>
-    // Keywords to style
-    const keywords = [
-      "newsroom", "reporting", "defense", "politics", "sports",
-      "elections", "media", "journalist", "startup", "builder",
-      "stories", "inform", "engage", "imagine"
-    ];
-
-    // Function to highlight keywords in a paragraph
-    function highlightKeywords(paragraphId) {
-      const para = document.getElementById(paragraphId);
-      let html = para.innerHTML;
-
-      // Track occurrences to skip the second "media"
-      const occurrences = {};
-
-      keywords.forEach(word => {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi'); // match whole word, case-insensitive
-        html = html.replace(regex, match => {
-          if (word.toLowerCase() === "media") {
-            occurrences[word] = (occurrences[word] || 0) + 1;
-            if (occurrences[word] === 2) return match; // skip second occurrence
-          }
-          return `<span class="highlight-keyword">${match}</span>`;
-        });
-      });
-
-      para.innerHTML = html;
-    }
-
-    highlightKeywords("para1");
-    highlightKeywords("para2");
-    highlightKeywords("para3");
-  </script>
-</body>
-
-</html>
+    nav.nav ul li {
+      margi
