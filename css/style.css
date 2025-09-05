@@ -7,7 +7,7 @@
 
 /* Layout */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Raleway', sans-serif;
   display: grid;
   grid-template-columns: 220px 1fr;
   height: 100vh;
@@ -77,6 +77,16 @@ body {
   font-size: 1.1rem;
   margin-top: 0.5rem;
   color: #B0B0B0;
+}
+
+/* Footer */
+.footer {
+  grid-column: span 2;
+  text-align: center;
+  padding: 1rem;
+  background: #111;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
 }
 
 /* Responsive */
