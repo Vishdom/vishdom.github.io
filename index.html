@@ -4,39 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vishwanath Patil | Portfolio</title>
+  <title>Inside Out | Vishwanath Patil</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Merriweather', serif;
       line-height: 1.6;
       color: #111;
-      margin: 0;
+      margin: 40px;
       padding: 0;
-      display: flex;
     }
 
-    /* Vertical sidebar navigation - plain stacked links */
-    nav.nav {
-      width: 200px;
-      min-height: 100vh;
-      background-color: #f5f5f5;
-      padding: 40px 20px;
-      box-sizing: border-box;
-      position: fixed;
-      top: 0;
-      left: 0;
-    }
-
+    /* Minimalist vertical links */
     nav.nav ul {
       list-style-type: none;
       padding: 0;
-      margin: 0;
+      margin: 0 0 20px 0;
+      /* spacing after nav block */
     }
 
     nav.nav ul li {
@@ -50,24 +38,22 @@
       display: block;
       /* stacked links */
       font-weight: normal;
+      margin: 0;
+      /* no padding */
     }
 
     nav.nav ul li a.active {
       font-weight: 600;
     }
 
-    /* Main content area */
     main.content {
-      margin-left: 220px;
-      /* leave space for sidebar */
-      padding: 40px 20px;
       max-width: 800px;
     }
 
     h1,
     h2,
     h3 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Merriweather', serif;
       font-weight: 700;
       margin-bottom: 0.5em;
     }
@@ -85,12 +71,15 @@
 
     .red-dot {
       color: red;
+      font-size: 30px;
+      /* large visible dot */
+      vertical-align: middle;
     }
   </style>
 </head>
 
 <body>
-  <!-- Vertical Sidebar Navigation -->
+  <!-- Vertical stacked links -->
   <nav class="nav">
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
@@ -104,24 +93,23 @@
 
   <!-- Main content -->
   <main class="content">
-    <h2>Hi, I’m <span class="highlight">Vishwanath Patil</span></h2>
+    <h1>Inside Out</h1>
 
     <p id="para1">
-      I’ve lived the newsroom in all its forms — from reporting on defense and politics to producing sports, events,
-      from live elections broadcasts to building AI-driven workflows that change how media gets made.
-      I don’t just adapt to media shifts; I build for them.
+      As a producer, journalist, and newsroom head, I spend my days building processes, crafting stories, and exploring
+      both time-tested and emerging technologies. Over the past 13 years as a multidisciplinary storyteller, I’ve dived
+      into every corner of journalism — production, design-thinking, and storytelling — learning by doing, hands-on.
+      Print, digital, broadcast — I’ve had the privilege of working with some of India’s most talented people and
+      companies, creating identities, news pieces, experiences, and films along the way.
     </p>
 
     <p id="para2">
-      That means creating stories that matter, systems that scale, and platforms that grow.
-      I bring the curiosity of a journalist, the agility of a startup, and the stubbornness of a builder who won’t
-      settle for the ordinary.
+      This site isn’t just a portfolio. It’s a space beyond social streams where I can share my thoughts, ideas, and
+      experiments — a place to explore what excites me about storytelling and media today<span class="red-dot">.</span>
     </p>
 
     <p id="para3">
-      This space is my workshop.
-      Here, you’ll find the work I’ve done, the stories I’ve shaped, and the experiments I’ve pushed into reality —
-      always chasing better ways to inform, engage, and imagine what’s next<span class="red-dot">.</span>
+      <!-- Optional paragraph for keyword highlights if needed -->
     </p>
   </main>
 
@@ -135,6 +123,7 @@
 
     function highlightKeywords(paragraphId) {
       const para = document.getElementById(paragraphId);
+      if (!para) return;
       let html = para.innerHTML;
       const occurrences = {};
 
