@@ -52,6 +52,9 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  transition: max-height 0.3s ease; /* Smooth transition for toggle */
+  overflow: hidden;                /* Hide content when collapsed */
+  max-height: 0;                   /* Initially collapsed */
 }
 
 .nav ul li {
@@ -83,7 +86,10 @@ body {
     position: absolute;
     top: 2.5rem;
     left: 0;
-    width: 200px;
+  }
+
+  .nav ul.show {
+    max-height: 500px; /* Expand to fit content */
   }
 
   .nav ul.show {
