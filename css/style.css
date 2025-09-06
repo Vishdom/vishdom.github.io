@@ -11,3 +11,26 @@ body {
   padding: 2rem;
   text-align: center;
 }
+/* Default desktop layout */
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Mobile responsive fix */
+@media (max-width: 768px) {
+  .content {
+    position: static;  /* remove absolute centering */
+    transform: none;
+    margin: 6rem 1rem 2rem 1rem; /* spacing below nav */
+    text-align: left;  /* better readability */
+    max-width: 100%;   /* fit screen width */
+  }
+}
