@@ -94,3 +94,53 @@ body {
     display: block;
   }
 }
+/* Desktop (centered) */
+@media (min-width: 769px) {
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    max-width: 700px;
+  }
+}
+
+/* Mobile (flow from top, below nav) */
+@media (max-width: 768px) {
+  .content {
+    position: static;   /* remove centering */
+    transform: none;
+    margin: 5rem 1rem 2rem 1rem; /* enough space below nav */
+    text-align: left;
+    max-width: 100%;
+  }
+}
+/* Mobile nav dropdown */
+@media (max-width: 768px) {
+  .nav ul {
+    display: none;
+    background: rgba(255, 255, 255, 0.9); /* subtle transparent bg */
+    backdrop-filter: blur(6px);           /* glassy look */
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+    right: 0;              /* full width */
+    border: none;          /* remove ugly border */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* subtle shadow */
+  }
+
+  .nav ul.show {
+    display: block;
+  }
+
+  .nav ul li {
+    margin: 0.8rem 0;
+  }
+
+  .nav ul li a {
+    font-size: 1.1rem;
+    display: block;
+  }
+}
