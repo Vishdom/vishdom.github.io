@@ -1,119 +1,173 @@
-/* Highlight animation */
-.highlight {
-  animation: highlightLoop 6s infinite;
-  display: inline-block;
+html {
+  box-sizing: border-box;
+  font-size: clamp(14px, 1.2vw, 16px);
+}
+body {
+  font-family: 'Merriweather', serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-@keyframes highlightLoop {
-  0% {
-    color: #222;
-    font-weight: normal;
-    font-style: normal;
+/* Navigation styles */
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 1.2rem 2rem 0 0;
+  background: transparent;
+  height: auto;
+  transition: transform 0.3s;
+  z-index: 100;
+}
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+.nav li {
+  margin-bottom: 0;
+}
+.nav a {
+  color: #222;
+  text-decoration: none;
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.nav a.active,
+.nav a:hover,
+.nav a:focus {
+  color: #e63946;
+  font-weight: bold;
+}
+
+/* Hamburger Button for mobile */
+.nav-toggle {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 200;
+  background: none;
+  border: 1px solid #222;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+.hamburger,
+.hamburger:before,
+.hamburger:after {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: #222;
+  border-radius: 2px;
+  transition: all 0.3s;
+  position: relative;
+}
+.hamburger:before,
+.hamburger:after {
+  content: "";
+  position: absolute;
+}
+.hamburger:before {
+  top: -10px;
+}
+.hamburger:after {
+  top: 10px;
+}
+/* No cross/X transformation for hamburger */
+
+@media (max-width: 900px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+    transform: translateY(-120%);
+    padding: 0.8rem 0 0.8rem 0;
+    z-index: 100;
   }
-  20% {
-    color: #e63946; /* red */
-    font-weight: bold;
-    font-style: italic;
+  .nav.open {
+    transform: translateY(0);
   }
-  40% {
-    color: #1d3557; /* dark blue */
-    font-weight: normal;
-    font-style: normal;
+  .nav ul {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 0.8rem;
+    padding-right: 2rem;
   }
-  60% {
-    color: #2a9d8f; /* teal */
-    font-weight: bold;
-    font-style: italic;
+  .nav li {
+    margin-bottom: 0;
+    display: block;
   }
-  80% {
-    color: #f4a261; /* orange */
-    font-weight: normal;
-    font-style: normal;
-  }
-  100% {
-    color: #222;
-    font-weight: normal;
-    font-style: normal;
+  .nav-toggle {
+    display: flex;
   }
 }
-/* === Centered main content === */
+
+/* Center main content */
 .content {
-  max-width: 700px;
-  margin: 0 auto; /* horizontal center */
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
   padding: 2rem;
-
-  /* Center vertically + horizontally */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; /* center align text */
+  max-width: 700px;
+  margin: 0 auto;
 }
 
+/* Heading (h1) */
 .content h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   color: #111;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
 }
 
+/* Body text (paragraph style) */
 .content p {
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  font-weight: 400;
 }
 
-/* === Glassmorphism + subtle bokeh behind the centered content === */
-.content.glass {
-  /* keep your existing centering rules above in the file */
-  background: rgba(255, 255, 255, 0.18);          /* translucent so blur shows through */
-  -webkit-backdrop-filter: blur(12px) saturate(120%);
-  backdrop-filter: blur(12px) saturate(120%);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  position: absolute;                              /* you already use this to center */
-  overflow: hidden;                                /* clip bokeh at rounded edges */
-  z-index: 0;                                      /* create a stacking context */
+/* Highlighted keyword styles (italic only, no underline, no color) */
+.highlight-keyword {
+  font-style: italic;
+  color: inherit;
+  background: none;
+  text-decoration: none;
 }
-
-/* Soft bokeh dots (very light pastels) */
-.content.glass::before {
-  content: "";
-  position: absolute;
-  inset: -60px; /* extend a bit beyond edges for nicer blur */
-  pointer-events: none;
-  z-index: -1;
-
-  /* a few small, light radial blobs */
-  background:
-    radial-gradient(circle at 18% 28%, rgba(255, 210, 210, 0.35) 0 60px, transparent 65px),
-    radial-gradient(circle at 82% 22%, rgba(210, 225, 255, 0.35) 0 42px, transparent 48px),
-    radial-gradient(circle at 75% 80%, rgba(210, 255, 235, 0.30) 0 52px, transparent 58px),
-    radial-gradient(circle at 28% 78%, rgba(255, 245, 210, 0.28) 0 40px, transparent 46px),
-    radial-gradient(circle at 50% 50%, rgba(240, 240, 255, 0.22) 0 70px, transparent 76px);
-  filter: blur(6px);
-  animation: bokehDrift 12s ease-in-out infinite alternate;
-}
-
-/* Subtle frosted sheen layer */
-.content.glass::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background: linear-gradient( to bottom right,
-    rgba(255, 255, 255, 0.28),
-    rgba(255, 255, 255, 0.06)
-  );
-}
-
-/* Gentle movement so it feels alive, not distracting */
-@keyframes bokehDrift {
-  0%   { transform: translate3d(0, 0, 0) scale(1);   opacity: 0.9; }
-  100% { transform: translate3d(6px, -8px, 0) scale(1.03); opacity: 1; }
-}
-
-/* Respect reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .content.glass::before { animation: none; }
+/* Footer styles */
+.site-footer {
+  margin-top: 3rem;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #444;
+  border-top: 1px solid #ccc;
 }

@@ -1,159 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inside Out | Vishwanath Patil</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/test.css">
-  <style>
-    body {
-      font-family: 'Merriweather', serif;
-      line-height: 1.6;
-      color: #111;
-      margin: 40px;
-      padding: 0;
-    }
-
-    /* Minimalist vertical links */
-    nav.nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0 0 20px 0;
-      /* spacing after nav block */
-    }
-
-    nav.nav ul li {
-      margin: 0;
-      /* no spacing between links */
-    }
-
-    nav.nav ul li a {
-      text-decoration: none;
-      color: #111;
-      display: block;
-      /* stacked links */
-      font-weight: normal;
-      margin: 0;
-      /* no padding */
-    }
-
-    nav.nav ul li a.active {
-      font-weight: 500;
-    }
-
-    main.content {
-      max-width: 800px;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Merriweather', serif;
-      font-weight: 500;
-      margin-bottom: 0.5em;
-    }
-
-    p {
-      margin-bottom: 1.5em;
-    }
-
-    .highlight-keyword {
-      font-style: italic;
-      text-decoration: underline;
-      text-decoration-thickness: 0.5px;
-      text-decoration-color: black;
-    }
-  </style>
-</head>
-<script>
-  document.querySelector(".nav-toggle").addEventListener("click", function () {
-    document.querySelector(".nav ul").classList.toggle("show");
-  });
-</script>
-
-<body>
-  <!-- Vertical stacked links -->
-  <nav class="nav">
-    <button class="nav-toggle">☰</button>
-    <ul>
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-
-  <!-- Main content -->
-  <main class="content glass">
-    <h1>Vishdom</h1>
-
-    <p id="para1">
-      I don’t just work in <span class="highlight-keyword">newsrooms</span>; I build them. As a <span
-        class="highlight-keyword">producer</span>, <span class="highlight-keyword">journalist</span>, and newsroom head,
-      I spend my days creating processes that last, shaping <span class="highlight-keyword">stories</span> that matter,
-      and mastering technologies both old and new. For over 13 years, I’ve rolled up my sleeves in every corner of
-      journalism — <span class="highlight-keyword">reporting</span>, editing, <span
-        class="highlight-keyword">production</span>, design-thinking, <span
-        class="highlight-keyword">storytelling</span> — learning by doing and refusing to settle for anything ordinary.
-      Print, digital, broadcast — I’ve collaborated with some of India’s most talented people and companies, creating
-      identities, news pieces, experiences, and <span class="highlight-keyword">stories</span> that stand their ground.
-    </p>
-
-    <p id="para2">
-      This site isn’t a portfolio in the conventional sense. It’s a space beyond social streams, a workshop where I
-      share ideas, experiments, and reflections. Here, you’ll see the curiosity, the rigor, and the stubbornness that
-      drives my work — a place to explore how <span class="highlight-keyword">stories</span>, systems, and platforms can
-      be built, not just consumed.
-    </p>
-
-    <p>
-      I focus on <span class="highlight">problem-solving</span>, staying
-      <span class="highlight">consistent</span>, and building with purpose.
-    </p>
-
-  </main>
-  <!-- Optional paragraph for keyword highlights if needed -->
+<main class="content">
+  <h1>Vishdom</h1>
+  <p id="para1">
+    I don’t just work in newsrooms; I build them. As a producer, journalist, and newsroom head,
+    I spend my days creating processes that last, shaping stories that matter,
+    and mastering technologies both old and new. For over 13 years, I’ve rolled up my sleeves in every corner of
+    journalism — reporting, editing, production, design-thinking, storytelling — learning by doing and refusing to
+    settle for anything ordinary.
+    Print, digital, broadcast — I’ve collaborated with some of India’s most talented people and companies, creating
+    identities, news pieces, experiences, and stories that stand their ground.
   </p>
-  </main>
+  <p>
+    I focus on <span class="highlight-keyword">problem-solving</span>,
+    staying <span class="highlight-keyword">consistent</span>,
+    and building with <span class="highlight-keyword">purpose</span>.
+  </p>
+</main>
 
-  <script>
-    // Keywords to style
-    const keywords = [
-      "newsroom", "reporting", "defense", "politics", "sports",
-      "elections", "media", "journalist", "startup", "builder",
-      "stories", "inform", "engage", "imagine"
-    ];
-
-    function highlightKeywords(paragraphId) {
-      const para = document.getElementById(paragraphId);
-      if (!para) return;
-      let html = para.innerHTML;
-      const occurrences = {};
-
-      keywords.forEach(word => {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi');
-        html = html.replace(regex, match => {
-          if (word.toLowerCase() === "media") {
-            occurrences[word] = (occurrences[word] || 0) + 1;
-            if (occurrences[word] === 2) return match;
-          }
-          return `<span class="highlight-keyword">${match}</span>`;
-        });
-      });
-
-      para.innerHTML = html;
-    }
-
-    highlightKeywords("para1");
-    highlightKeywords("para2");
-    highlightKeywords("para3");
-  </script>
-</body>
-
-</html>
+<!-- Footer Section -->
+<footer class="site-footer" id="para2">
+  <p>
+    This site isn’t a portfolio in the conventional sense. It’s a space beyond social streams, a workshop where I
+    share ideas, experiments, and reflections. Here, you’ll see the curiosity, the rigor, and the stubbornness that
+    drives my work — a place to explore how stories, systems, and platforms can
+    be built, not just consumed.
+  </p>
+</footer>
