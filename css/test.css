@@ -60,3 +60,60 @@
   font-size: 1.2rem;
   line-height: 1.8;
 }
+
+/* === Glassmorphism + subtle bokeh behind the centered content === */
+.content.glass {
+  /* keep your existing centering rules above in the file */
+  background: rgba(255, 255, 255, 0.18);          /* translucent so blur shows through */
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: absolute;                              /* you already use this to center */
+  overflow: hidden;                                /* clip bokeh at rounded edges */
+  z-index: 0;                                      /* create a stacking context */
+}
+
+/* Soft bokeh dots (very light pastels) */
+.content.glass::before {
+  content: "";
+  position: absolute;
+  inset: -60px; /* extend a bit beyond edges for nicer blur */
+  pointer-events: none;
+  z-index: -1;
+
+  /* a few small, light radial blobs */
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 210, 210, 0.35) 0 60px, transparent 65px),
+    radial-gradient(circle at 82% 22%, rgba(210, 225, 255, 0.35) 0 42px, transparent 48px),
+    radial-gradient(circle at 75% 80%, rgba(210, 255, 235, 0.30) 0 52px, transparent 58px),
+    radial-gradient(circle at 28% 78%, rgba(255, 245, 210, 0.28) 0 40px, transparent 46px),
+    radial-gradient(circle at 50% 50%, rgba(240, 240, 255, 0.22) 0 70px, transparent 76px);
+  filter: blur(6px);
+  animation: bokehDrift 12s ease-in-out infinite alternate;
+}
+
+/* Subtle frosted sheen layer */
+.content.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient( to bottom right,
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.06)
+  );
+}
+
+/* Gentle movement so it feels alive, not distracting */
+@keyframes bokehDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1);   opacity: 0.9; }
+  100% { transform: translate3d(6px, -8px, 0) scale(1.03); opacity: 1; }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .content.glass::before { animation: none; }
+}
