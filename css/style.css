@@ -34,3 +34,22 @@ body {
     max-width: 100%;   /* fit screen width */
   }
 }
+/* === Responsive fixes === */
+@media (max-width: 768px) {
+  .content {
+    position: static;     /* remove absolute centering */
+    transform: none;
+    margin: 6rem 1rem 2rem 1rem; /* spacing below nav */
+    text-align: left;     /* better readability */
+    max-width: 100%;      /* fit screen width */
+  }
+
+  .content h1 {
+    font-size: clamp(1.8rem, 5vw, 2.2rem); /* scales with screen */
+  }
+
+  .content p {
+    font-size: clamp(1rem, 4vw, 1.1rem);   /* slightly smaller on mobiles */
+    line-height: 1.6;
+  }
+}
