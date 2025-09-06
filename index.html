@@ -70,10 +70,20 @@
     }
   </style>
 </head>
+<script>
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMenu = document.querySelector(".nav ul");
+
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show");
+  });
+</script>
 
 <body>
   <!-- Vertical stacked links -->
+  <!-- Navigation -->
   <nav class="nav">
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
