@@ -1,143 +1,119 @@
-/* === Base layout === */
-body {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-size: clamp(1rem, 1.5vw, 1.2rem); /* Fluid font size for body */
+/* Highlight animation */
+.highlight {
+  animation: highlightLoop 6s infinite;
+  display: inline-block;
 }
 
-/* === Main content (desktop default) === */
+@keyframes highlightLoop {
+  0% {
+    color: #222;
+    font-weight: normal;
+    font-style: normal;
+  }
+  20% {
+    color: #e63946; /* red */
+    font-weight: bold;
+    font-style: italic;
+  }
+  40% {
+    color: #1d3557; /* dark blue */
+    font-weight: normal;
+    font-style: normal;
+  }
+  60% {
+    color: #2a9d8f; /* teal */
+    font-weight: bold;
+    font-style: italic;
+  }
+  80% {
+    color: #f4a261; /* orange */
+    font-weight: normal;
+    font-style: normal;
+  }
+  100% {
+    color: #222;
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+/* === Centered main content === */
 .content {
   max-width: 700px;
+  margin: 0 auto; /* horizontal center */
   padding: 2rem;
-  text-align: center;
 
-  /* Center in desktop */
+  /* Center vertically + horizontally */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center; /* center align text */
 }
 
 .content h1 {
-  font-size: clamp(2rem, 4vw, 3rem); /* Fluid font size for headings */
+  font-size: 2.5rem;
+  color: #111;
+  margin-bottom: 1.5rem;
 }
 
 .content p {
-  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Fluid font size for paragraphs */
-  line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.8;
 }
 
-/* === Responsive fixes for mobile === */
-@media (max-width: 768px) {
-  .content {
-    position: static;       /* remove absolute centering */
-    transform: none;
-    margin: 6rem 1rem 2rem 1rem;
-    text-align: left;
-    max-width: 100%;
-  }
-
-  .content h1 {
-    font-size: clamp(1.8rem, 6vw, 2.2rem);
-  }
-
-  .content p {
-    font-size: clamp(1rem, 4.5vw, 1.1rem);
-    line-height: 1.6;
-  }
+/* === Glassmorphism + subtle bokeh behind the centered content === */
+.content.glass {
+  /* keep your existing centering rules above in the file */
+  background: rgba(255, 255, 255, 0.18);          /* translucent so blur shows through */
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  position: absolute;                              /* you already use this to center */
+  overflow: hidden;                                /* clip bokeh at rounded edges */
+  z-index: 0;                                      /* create a stacking context */
 }
 
-/* === Navigation === */
-.nav {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
+/* Soft bokeh dots (very light pastels) */
+.content.glass::before {
+  content: "";
+  position: absolute;
+  inset: -60px; /* extend a bit beyond edges for nicer blur */
+  pointer-events: none;
+  z-index: -1;
+
+  /* a few small, light radial blobs */
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 210, 210, 0.35) 0 60px, transparent 65px),
+    radial-gradient(circle at 82% 22%, rgba(210, 225, 255, 0.35) 0 42px, transparent 48px),
+    radial-gradient(circle at 75% 80%, rgba(210, 255, 235, 0.30) 0 52px, transparent 58px),
+    radial-gradient(circle at 28% 78%, rgba(255, 245, 210, 0.28) 0 40px, transparent 46px),
+    radial-gradient(circle at 50% 50%, rgba(240, 240, 255, 0.22) 0 70px, transparent 76px);
+  filter: blur(6px);
+  animation: bokehDrift 12s ease-in-out infinite alternate;
 }
 
-.nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  transition: max-height 0.3s ease; /* Smooth transition for toggle */
-  overflow: hidden;                /* Hide content when collapsed */
-  max-height: 0;                   /* Initially collapsed */
+/* Subtle frosted sheen layer */
+.content.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient( to bottom right,
+    rgba(255, 255, 255, 0.28),
+    rgba(255, 255, 255, 0.06)
+  );
 }
 
-.nav ul li {
-  margin: 0.5rem 0;
+/* Gentle movement so it feels alive, not distracting */
+@keyframes bokehDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1);   opacity: 0.9; }
+  100% { transform: translate3d(6px, -8px, 0) scale(1.03); opacity: 1; }
 }
 
-.nav ul li a {
-  text-decoration: none;
-  color: #111;
-  font-weight: normal;
-  font-size: clamp(0.9rem, 2.5vw, 1rem); /* Fluid font size for nav links */
-}
-
-/* === Hamburger button === */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  outline: none; /* Remove border when clicked */
-}
-
-/* === Mobile nav === */
-@media (max-width: 768px) {
-  .nav ul {
-    display: none;
-    background: #fff;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    position: absolute;
-    top: 2.5rem;
-    left: 0;
-  }
-
-  .nav ul.show {
-    max-height: 500px; /* Expand to fit content */
-  }
-
-  .nav ul.show {
-    display: block;
-  }
-
-  .nav-toggle {
-    display: block;
-  }
-}
-
-/* Mobile nav dropdown */
-@media (max-width: 768px) {
-  .nav ul {
-    display: none;
-    background: rgba(255, 255, 255, 0.9); /* subtle transparent bg */
-    backdrop-filter: blur(6px);           /* glassy look */
-    padding: 0.5rem 1rem;
-    position: absolute;
-    top: 2.5rem;
-    left: 0;
-    right: 0;              /* full width */
-    border: none;          /* remove ugly border */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* subtle shadow */
-  }
-
-  .nav ul.show {
-    display: block;
-  }
-
-  .nav ul li {
-    margin: 0.8rem 0;
-  }
-
-  .nav ul li a {
-    font-size: clamp(1rem, 3vw, 1.2rem); /* Fluid font size for mobile nav links */
-    display: block;
-  }
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .content.glass::before { animation: none; }
 }
