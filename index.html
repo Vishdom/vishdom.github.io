@@ -9,77 +9,12 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/test.css">
-  <style>
-    body {
-      font-family: 'Merriweather', serif;
-      line-height: 1.6;
-      color: #111;
-      margin: 40px;
-      padding: 0;
-    }
-
-    /* Minimalist vertical links */
-    nav.nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0 0 20px 0;
-      /* spacing after nav block */
-    }
-
-    nav.nav ul li {
-      margin: 0;
-      /* no spacing between links */
-    }
-
-    nav.nav ul li a {
-      text-decoration: none;
-      color: #111;
-      display: block;
-      /* stacked links */
-      font-weight: normal;
-      margin: 0;
-      /* no padding */
-    }
-
-    nav.nav ul li a.active {
-      font-weight: 500;
-    }
-
-    main.content {
-      max-width: 800px;
-    }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Merriweather', serif;
-      font-weight: 500;
-      margin-bottom: 0.5em;
-    }
-
-    p {
-      margin-bottom: 1.5em;
-    }
-
-    .highlight-keyword {
-      font-style: italic;
-      text-decoration: underline;
-      text-decoration-thickness: 0.5px;
-      text-decoration-color: black;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<script>
-  document.querySelector(".nav-toggle").addEventListener("click", function () {
-    document.querySelector(".nav ul").classList.toggle("show");
-  });
-</script>
 
 <body>
   <!-- Vertical stacked links -->
   <nav class="nav">
-    <button class="nav-toggle">☰</button>
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -88,9 +23,8 @@
     </ul>
   </nav>
 
-
   <!-- Main content -->
-  <main class="content glass">
+  <main class="content">
     <h1>Vishdom</h1>
 
     <p id="para1">
@@ -116,10 +50,6 @@
       I focus on <span class="highlight">problem-solving</span>, staying
       <span class="highlight">consistent</span>, and building with purpose.
     </p>
-
-  </main>
-  <!-- Optional paragraph for keyword highlights if needed -->
-  </p>
   </main>
 
   <script>
@@ -152,7 +82,6 @@
 
     highlightKeywords("para1");
     highlightKeywords("para2");
-    highlightKeywords("para3");
   </script>
 </body>
 
