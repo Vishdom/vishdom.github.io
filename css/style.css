@@ -161,32 +161,27 @@ body {
   font-weight: 400;
 }
 
-/* Highlighted keyword styles (italic, underline) */
+/* Highlighted keyword styles (italic only, no underline, no color) */
 .highlight-keyword {
   font-style: italic;
-  color: #222;
+  color: inherit;
   background: none;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 2px;
+  text-decoration: none;
 }
 
-/* Animated toggle for last-line highlights */
-.toggle-underline-italic {
-  animation: toggleStyle 2.2s infinite;
-  font-weight: bold;
+/* Animated toggle for last-line highlights: italic <-> bold */
+.toggle-italic-bold {
+  animation: toggleItalicBold 2.2s infinite;
   color: inherit;
 }
 
-@keyframes toggleStyle {
+@keyframes toggleItalicBold {
   0%, 100% {
     font-style: italic;
-    text-decoration: none;
+    font-weight: normal;
   }
   50% {
     font-style: normal;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+    font-weight: bold;
   }
 }
