@@ -1,53 +1,56 @@
-/* Base layout */
-body {
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #fff;
-  color: #222;
-  height: 100vh;  /* full viewport height */
-  overflow: hidden; /* prevent scroll if not needed */
+/* Highlight animation */
+.highlight {
+  animation: highlightLoop 6s infinite;
+  display: inline-block;
 }
 
-/* Navigation (top-left) */
-.nav {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
+@keyframes highlightLoop {
+  0% {
+    color: #222;
+    font-weight: normal;
+    font-style: normal;
+  }
+  20% {
+    color: #e63946; /* red */
+    font-weight: bold;
+    font-style: italic;
+  }
+  40% {
+    color: #1d3557; /* dark blue */
+    font-weight: normal;
+    font-style: normal;
+  }
+  60% {
+    color: #2a9d8f; /* teal */
+    font-weight: bold;
+    font-style: italic;
+  }
+  80% {
+    color: #f4a261; /* orange */
+    font-weight: normal;
+    font-style: normal;
+  }
+  100% {
+    color: #222;
+    font-weight: normal;
+    font-style: normal;
+  }
 }
-
-.nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav ul li {
-  margin-bottom: 0.8rem;
-}
-
-.nav ul li a {
-  color: #444;
-  text-decoration: none;
-  font-size: 1.1rem;
-}
-
-.nav ul li a.active,
-.nav ul li a:hover {
-  color: #000;
-  font-weight: bold;
-}
-
-/* Content - centered vertically and horizontally */
+/* === Centered main content === */
 .content {
   max-width: 700px;
+  margin: 0 auto; /* horizontal center */
   padding: 2rem;
-  position: absolute;        /* relative to viewport */
-  top: 50%;                  /* move to middle vertically */
-  left: 50%;                 /* center horizontally */
-  transform: translate(-50%, -50%); /* perfect centering */
+
+  /* Center vertically + horizontally */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; /* center align text */
 }
 
-.content h2 {
+.content h1 {
   font-size: 2.5rem;
   color: #111;
   margin-bottom: 1.5rem;
@@ -56,8 +59,4 @@ body {
 .content p {
   font-size: 1.2rem;
   line-height: 1.8;
-}
-
-.highlight {
-  color: #444;
 }
