@@ -1,57 +1,28 @@
-/* Add this to style.css */
-.content p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  opacity: 0;
-  animation: fadeIn 2s ease forwards;
+/* Highlight animation */
+.highlight {
+  animation: highlightLoop 4s infinite;
+  display: inline-block;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
+@keyframes highlightLoop {
+  0% {
+    color: #222;
+    font-weight: normal;
   }
-}
-
-.content h1 {
-  font-size: 3rem;
-  animation: floaty 4s ease-in-out infinite;
-}
-
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.highlight-keyword {
-  font-style: italic;
-  text-decoration: underline;
-  text-decoration-thickness: 0.5px;
-  text-decoration-color: black;
-  position: relative;
-}
-
-.highlight-keyword::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
-  opacity: 0.5;
-}
-.content h1 {
-  font-size: 3rem;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid #111;
-  width: 0;
-  animation: typing 3s steps(20, end) forwards, blink 0.8s step-end infinite;
-}
-
-@keyframes typing {
-  to { width: 100%; }
-}
-@keyframes blink {
-  50% { border-color: transparent; }
+  25% {
+    color: #e63946; /* red */
+    font-weight: bold;
+  }
+  50% {
+    color: #1d3557; /* dark blue */
+    font-weight: normal;
+  }
+  75% {
+    color: #2a9d8f; /* teal */
+    font-weight: bold;
+  }
+  100% {
+    color: #222;
+    font-weight: normal;
+  }
 }
