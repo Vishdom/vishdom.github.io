@@ -1,66 +1,34 @@
+/* === Base layout === */
 body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  margin: 0;
 }
 
+/* === Main content (desktop default) === */
 .content {
   max-width: 700px;
   padding: 2rem;
   text-align: center;
-}
-/* Default desktop layout */
-.content {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem;
 
+  /* Center in desktop */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
 }
 
-/* Mobile responsive fix */
+/* === Responsive fixes for mobile === */
 @media (max-width: 768px) {
   .content {
-    position: static;  /* remove absolute centering */
+    position: static;       /* remove absolute centering */
     transform: none;
-    margin: 6rem 1rem 2rem 1rem; /* spacing below nav */
-    text-align: left;  /* better readability */
-    max-width: 100%;   /* fit screen width */
-  }
-}
-/* === Responsive fixes === */
-@media (max-width: 768px) {
-  .content {
-    position: static;     /* remove absolute centering */
-    transform: none;
-    margin: 6rem 1rem 2rem 1rem; /* spacing below nav */
-    text-align: left;     /* better readability */
-    max-width: 100%;      /* fit screen width */
-  }
-
-  .content h1 {
-    font-size: clamp(1.8rem, 5vw, 2.2rem); /* scales with screen */
-  }
-
-  .content p {
-    font-size: clamp(1rem, 4vw, 1.1rem);   /* slightly smaller on mobiles */
-    line-height: 1.6;
-  }
-}
-/* === Responsive fixes === */
-@media (max-width: 768px) {
-  .content {
-    position: static;     /* remove absolute centering */
-    transform: none;
-    margin: 6rem 1rem 2rem 1rem; /* space below nav */
-    text-align: left;     /* easier reading on mobile */
-    max-width: 100%;      /* take full width */
+    margin: 6rem 1rem 2rem 1rem;
+    text-align: left;
+    max-width: 100%;
   }
 
   .content h1 {
@@ -72,7 +40,8 @@ body {
     line-height: 1.6;
   }
 }
-/* Base nav */
+
+/* === Navigation === */
 .nav {
   position: fixed;
   top: 1rem;
@@ -95,7 +64,7 @@ body {
   font-weight: normal;
 }
 
-/* Hamburger button */
+/* === Hamburger button === */
 .nav-toggle {
   display: none;
   background: none;
@@ -104,7 +73,7 @@ body {
   cursor: pointer;
 }
 
-/* Mobile styles */
+/* === Mobile nav === */
 @media (max-width: 768px) {
   .nav ul {
     display: none;

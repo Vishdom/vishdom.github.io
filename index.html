@@ -20,34 +20,45 @@
     }
 
     /* Minimalist vertical links */
+    nav.nav {
+      position: relative;
+    }
+
     nav.nav ul {
       list-style-type: none;
       padding: 0;
       margin: 0 0 20px 0;
-      /* spacing after nav block */
     }
 
     nav.nav ul li {
       margin: 0;
-      /* no spacing between links */
     }
 
     nav.nav ul li a {
       text-decoration: none;
       color: #111;
       display: block;
-      /* stacked links */
       font-weight: normal;
       margin: 0;
-      /* no padding */
     }
 
     nav.nav ul li a.active {
       font-weight: 500;
     }
 
+    /* Hamburger button (hidden by default) */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+
     main.content {
       max-width: 800px;
+      margin: 8rem auto 2rem auto;
     }
 
     h1,
@@ -68,28 +79,63 @@
       text-decoration-thickness: 0.5px;
       text-decoration-color: black;
     }
+
+    /* === Responsive fixes === */
+    @media (max-width: 768px) {
+      body {
+        margin: 20px;
+      }
+
+      main.content {
+        margin: 6rem 1rem 2rem 1rem;
+        text-align: left;
+        max-width: 100%;
+      }
+
+      main.content h1 {
+        font-size: clamp(1.8rem, 6vw, 2.2rem);
+      }
+
+      main.content p {
+        font-size: clamp(1rem, 4.5vw, 1.1rem);
+        line-height: 1.6;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav ul {
+        display: none;
+        background: #fff;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        position: absolute;
+        top: 2.5rem;
+        left: 0;
+        width: 200px;
+      }
+
+      .nav ul.show {
+        display: block;
+      }
+    }
   </style>
 </head>
 <script>
-  const navToggle = document.querySelector(".nav-toggle");
-  const navMenu = document.querySelector(".nav ul");
-
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
+  document.querySelector(".nav-toggle").addEventListener("click", function () {
+    document.querySelector(".nav ul").classList.toggle("show");
   });
 </script>
 
 <body>
-  <!-- Vertical stacked links -->
   <!-- Navigation -->
   <nav class="nav">
-    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <button class="nav-toggle">☰</button>
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="stories.html">Stories</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="projects.html">Projects</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -127,12 +173,18 @@
       way I create, and the way I <span class="highlight-keyword">imagine</span> what’s next.
     </p>
   </main>
-  <!-- Optional paragraph for keyword highlights if needed -->
-  </p>
-  </main>
 
+  <!-- Scripts -->
   <script>
-    // Keywords to style
+    // Nav toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navMenu = document.querySelector(".nav ul");
+
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+    // Keyword highlighter
     const keywords = [
       "newsroom", "reporting", "defense", "politics", "sports",
       "elections", "media", "journalist", "startup", "builder",
