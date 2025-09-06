@@ -5,16 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inside Out | Vishwanath Patil</title>
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!-- Vertical stacked links -->
-  <nav class="nav">
+  <!-- Hamburger Menu Button -->
+  <button class="nav-toggle" aria-label="Open navigation" aria-controls="nav" aria-expanded="false">
+    <span class="hamburger"></span>
+  </button>
+
+  <!-- Navigation -->
+  <nav id="nav" class="nav">
     <ul>
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -26,63 +29,27 @@
   <!-- Main content -->
   <main class="content">
     <h1>Vishdom</h1>
-
     <p id="para1">
-      I don’t just work in <span class="highlight-keyword">newsrooms</span>; I build them. As a <span
-        class="highlight-keyword">producer</span>, <span class="highlight-keyword">journalist</span>, and newsroom head,
-      I spend my days creating processes that last, shaping <span class="highlight-keyword">stories</span> that matter,
+      I don’t just work in newsrooms; I build them. As a producer, journalist, and newsroom head,
+      I spend my days creating processes that last, shaping stories that matter,
       and mastering technologies both old and new. For over 13 years, I’ve rolled up my sleeves in every corner of
-      journalism — <span class="highlight-keyword">reporting</span>, editing, <span
-        class="highlight-keyword">production</span>, design-thinking, <span
-        class="highlight-keyword">storytelling</span> — learning by doing and refusing to settle for anything ordinary.
+      journalism — reporting, editing, production, design-thinking, storytelling — learning by doing and refusing to
+      settle for anything ordinary.
       Print, digital, broadcast — I’ve collaborated with some of India’s most talented people and companies, creating
-      identities, news pieces, experiences, and <span class="highlight-keyword">stories</span> that stand their ground.
+      identities, news pieces, experiences, and stories that stand their ground.
     </p>
-
     <p id="para2">
       This site isn’t a portfolio in the conventional sense. It’s a space beyond social streams, a workshop where I
       share ideas, experiments, and reflections. Here, you’ll see the curiosity, the rigor, and the stubbornness that
-      drives my work — a place to explore how <span class="highlight-keyword">stories</span>, systems, and platforms can
+      drives my work — a place to explore how stories, systems, and platforms can
       be built, not just consumed.
     </p>
-
     <p>
       I focus on <span class="highlight">problem-solving</span>, staying
       <span class="highlight">consistent</span>, and building with purpose.
     </p>
   </main>
-
-  <script>
-    // Keywords to style
-    const keywords = [
-      "newsroom", "reporting", "defense", "politics", "sports",
-      "elections", "media", "journalist", "startup", "builder",
-      "stories", "inform", "engage", "imagine"
-    ];
-
-    function highlightKeywords(paragraphId) {
-      const para = document.getElementById(paragraphId);
-      if (!para) return;
-      let html = para.innerHTML;
-      const occurrences = {};
-
-      keywords.forEach(word => {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi');
-        html = html.replace(regex, match => {
-          if (word.toLowerCase() === "media") {
-            occurrences[word] = (occurrences[word] || 0) + 1;
-            if (occurrences[word] === 2) return match;
-          }
-          return `<span class="highlight-keyword">${match}</span>`;
-        });
-      });
-
-      para.innerHTML = html;
-    }
-
-    highlightKeywords("para1");
-    highlightKeywords("para2");
-  </script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
