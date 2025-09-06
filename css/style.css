@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  font-size: clamp(14px, 1.7vw, 17px);
+  font-size: clamp(14px, 1.2vw, 16px);
 }
 body {
   font-family: 'Merriweather', serif;
@@ -10,15 +10,18 @@ body {
   color: #222;
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 /* Navigation styles */
 .nav {
-  min-width: 140px;
-  padding: 2rem 0 0 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  padding: 1.2rem 2rem 0 0;
   background: transparent;
-  height: 100vh;
+  height: auto;
   transition: transform 0.3s;
   z-index: 100;
 }
@@ -26,15 +29,18 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
 }
 .nav li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 .nav a {
   color: #222;
   text-decoration: none;
-  font-size: clamp(1rem, 1.2vw, 1.15rem); /* h3 size */
-  font-weight: 500; /* h3 weight */
+  font-size: clamp(0.95rem, 1vw, 1.05rem); /* paragraph size */
+  font-weight: 400; /* paragraph weight */
   transition: color 0.2s;
 }
 .nav a.active,
@@ -44,11 +50,11 @@ body {
   font-weight: bold;
 }
 
-/* Hamburger Button */
+/* Hamburger Button for mobile */
 .nav-toggle {
   position: fixed;
   top: 1.2rem;
-  left: 1.2rem;
+  right: 1.2rem;
   z-index: 200;
   background: none;
   border: none;
@@ -91,14 +97,12 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile/tablet: nav is hidden until opened */
+/* Mobile/tablet: nav is hidden until opened, hamburger visible */
 @media (max-width: 900px) {
-  body {
-    flex-direction: column;
-  }
   .nav {
     position: fixed;
     top: 0;
+    right: 0;
     left: 0;
     width: 100vw;
     height: auto;
@@ -112,26 +116,18 @@ body {
     transform: translateY(0);
   }
   .nav ul {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 1.2rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 0.8rem;
+    padding-right: 2rem;
   }
   .nav li {
     margin-bottom: 0;
-    display: inline-block;
+    display: block;
   }
   .nav-toggle {
     display: flex;
-  }
-  .content {
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    max-width: 700px;
-    width: 100%;
-    min-height: 75vh;
-    justify-content: flex-start;
   }
 }
 
@@ -151,18 +147,18 @@ body {
 
 /* Heading (h1) */
 .content h1 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem); /* h1 size but smaller and fluid */
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
   color: #111;
   margin-bottom: 2rem;
   font-weight: 700;
 }
 
-/* Body text (h3) */
+/* Body text (paragraph style) */
 .content p {
-  font-size: clamp(1rem, 1.4vw, 1.18rem); /* h3 size */
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
   line-height: 1.7;
   margin-bottom: 1.2rem;
-  font-weight: 500; /* h3 weight */
+  font-weight: 400;
 }
 
 /* Highlighted keyword styles (italic, underline) */
@@ -175,12 +171,22 @@ body {
   text-underline-offset: 2px;
 }
 
-/* Highlight phrase (colored, as in screenshot) */
-.highlight {
-  color: #e63946;
+/* Animated toggle for last-line highlights */
+.toggle-underline-italic {
+  animation: toggleStyle 2.2s infinite;
   font-weight: bold;
-  font-style: normal;
+  color: inherit;
 }
-.highlight + .highlight {
-  color: #f4a261;
+
+@keyframes toggleStyle {
+  0%, 100% {
+    font-style: italic;
+    text-decoration: none;
+  }
+  50% {
+    font-style: normal;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
 }
