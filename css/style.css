@@ -30,8 +30,9 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: row;
-  gap: 1.2rem;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-end;
 }
 .nav li {
   margin-bottom: 0;
@@ -39,8 +40,8 @@ body {
 .nav a {
   color: #222;
   text-decoration: none;
-  font-size: clamp(0.95rem, 1vw, 1.05rem); /* paragraph size */
-  font-weight: 400; /* paragraph weight */
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  font-weight: 400;
   transition: color 0.2s;
 }
 .nav a.active,
@@ -57,13 +58,15 @@ body {
   right: 1.2rem;
   z-index: 200;
   background: none;
-  border: none;
+  border: 1px solid #222;
+  border-radius: 5px;
   cursor: pointer;
   width: 44px;
   height: 44px;
   display: none;
   align-items: center;
   justify-content: center;
+  background: #fff;
 }
 .hamburger,
 .hamburger:before,
@@ -87,17 +90,8 @@ body {
 .hamburger:after {
   top: 10px;
 }
-.nav-toggle.open .hamburger {
-  background: transparent;
-}
-.nav-toggle.open .hamburger:before {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.nav-toggle.open .hamburger:after {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
+/* No cross/X transformation for hamburger */
 
-/* Mobile/tablet: nav is hidden until opened, hamburger visible */
 @media (max-width: 900px) {
   .nav {
     position: fixed;
@@ -169,19 +163,4 @@ body {
   text-decoration: none;
 }
 
-/* Animated toggle for last-line highlights: italic <-> bold */
-.toggle-italic-bold {
-  animation: toggleItalicBold 2.2s infinite;
-  color: inherit;
-}
-
-@keyframes toggleItalicBold {
-  0%, 100% {
-    font-style: italic;
-    font-weight: normal;
-  }
-  50% {
-    font-style: normal;
-    font-weight: bold;
-  }
-}
+/* Remove animation for last line, just italic style */
