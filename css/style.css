@@ -1,62 +1,13 @@
-/* Highlight animation */
-.highlight {
-  animation: highlightLoop 6s infinite;
-  display: inline-block;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
-@keyframes highlightLoop {
-  0% {
-    color: #222;
-    font-weight: normal;
-    font-style: normal;
-  }
-  20% {
-    color: #e63946; /* red */
-    font-weight: bold;
-    font-style: italic;
-  }
-  40% {
-    color: #1d3557; /* dark blue */
-    font-weight: normal;
-    font-style: normal;
-  }
-  60% {
-    color: #2a9d8f; /* teal */
-    font-weight: bold;
-    font-style: italic;
-  }
-  80% {
-    color: #f4a261; /* orange */
-    font-weight: normal;
-    font-style: normal;
-  }
-  100% {
-    color: #222;
-    font-weight: normal;
-    font-style: normal;
-  }
-}
-/* === Centered main content === */
 .content {
   max-width: 700px;
-  margin: 0 auto; /* horizontal center */
   padding: 2rem;
-
-  /* Center vertically + horizontally */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; /* center align text */
-}
-
-.content h1 {
-  font-size: 2.5rem;
-  color: #111;
-  margin-bottom: 1.5rem;
-}
-
-.content p {
-  font-size: 1.2rem;
-  line-height: 1.8;
+  text-align: center;
 }
