@@ -1,6 +1,6 @@
 /* Highlight animation */
 .highlight {
-  animation: highlightLoop 4s infinite;
+  animation: highlightLoop 6s infinite;
   display: inline-block;
 }
 
@@ -8,21 +8,31 @@
   0% {
     color: #222;
     font-weight: normal;
+    font-style: normal;
   }
-  25% {
+  20% {
     color: #e63946; /* red */
     font-weight: bold;
+    font-style: italic;
   }
-  50% {
+  40% {
     color: #1d3557; /* dark blue */
     font-weight: normal;
+    font-style: normal;
   }
-  75% {
+  60% {
     color: #2a9d8f; /* teal */
     font-weight: bold;
+    font-style: italic;
+  }
+  80% {
+    color: #f4a261; /* orange */
+    font-weight: normal;
+    font-style: normal;
   }
   100% {
     color: #222;
     font-weight: normal;
+    font-style: normal;
   }
 }
