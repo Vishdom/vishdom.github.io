@@ -4,6 +4,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: #fff;
   color: #222;
+  height: 100vh;  /* full viewport height */
+  overflow: hidden; /* prevent scroll if not needed */
 }
 
 /* Navigation (top-left) */
@@ -35,11 +37,14 @@ body {
   font-weight: bold;
 }
 
-/* Content */
+/* Content - centered vertically and horizontally */
 .content {
   max-width: 700px;
-  margin: 10rem auto 0 auto; /* pushes content below nav */
   padding: 2rem;
+  position: absolute;        /* relative to viewport */
+  top: 50%;                  /* move to middle vertically */
+  left: 50%;                 /* center horizontally */
+  transform: translate(-50%, -50%); /* perfect centering */
 }
 
 .content h2 {
