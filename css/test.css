@@ -21,3 +21,22 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
+
+.highlight-keyword {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-decoration-color: black;
+  position: relative;
+}
+
+.highlight-keyword::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  opacity: 0.5;
+}
